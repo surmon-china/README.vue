@@ -27,15 +27,7 @@
         </style>
         <p style="font-size: 12px; margin: 0">test word</p>
         <p>svg icon</p>
-        <img
-          width="22px"
-          src="https://raw.githubusercontent.com/surmon-china/surmon-china/main/icons/bing.svg"
-        />
         <p>image icon3</p>
-        <img
-          width="22px"
-          src="https://raw.githubusercontent.com/surmon-china/surmon.me/main/presses/logo.png"
-        />
         <p>css</p>
         <p class="hover">hover color</p>
         <p class="text">red color</p>
