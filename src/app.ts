@@ -27,5 +27,4 @@ app.get('/templates', (req, res) => {
 //   res.end(`Item: ${slug}`)
 // })
 
-// https://vercel.com/guides/using-express-with-vercel
-export = app
+export default app

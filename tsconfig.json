@@ -18,12 +18,12 @@
     "target": "es2017",
     "sourceMap": true,
     "rootDir": "src",
-    "outDir": "./api"
+    "outDir": "./dist"
   },
   "typeAcquisition": {
     "include": ["jest"]
   },
   "include": ["src/**/*", "test/**/*"],
-  "exclude": ["node_modules", "api"],
+  "exclude": ["node_modules", "dist"],
   "typeRoots": ["node_modules/@types"]
 }
