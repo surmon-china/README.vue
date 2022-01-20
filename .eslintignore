@@ -1,0 +1,8 @@
+# .eslintignore
+
+*.discard
+node_modules
+
+dist
+
+*.json
