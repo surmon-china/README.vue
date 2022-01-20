@@ -1,6 +1,6 @@
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <foreignObject width="120" height="50">
+  <foreignObject width="200" height="400">
     <body xmlns="http://www.w3.org/1999/xhtml">
         <style>
           @keyframes test {
@@ -10,6 +10,12 @@
             to {
               color: blue;
             }
+          }
+          .hover {
+            color: red;
+          }
+          .hover:hover {
+            color: blue;
           }
           .text {
             color: red;
@@ -31,7 +37,8 @@
           src="https://raw.githubusercontent.com/surmon-china/surmon.me/main/presses/logo.png"
         />
         <p>css</p>
-        <p class=".text">red color</p>
+        <p class="hover">hover color</p>
+        <p class="text">red color</p>
         <strong>strong string</strong>
         <h1 class="transition">animation</h1>
         <p>javascript</p>
