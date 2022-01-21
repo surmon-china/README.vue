@@ -31,6 +31,7 @@
     "@vue/server-renderer": "^3.2.28",
     "axios": "^0.25.0",
     "compression": "^1.7.4",
+    "esbuild": "^0.14.12",
     "express": "^4.17.2",
     "fs-extra": "^10.0.0",
     "rollup": "^2.65.0",
