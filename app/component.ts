@@ -1,63 +1,77 @@
 import vm from 'vm'
+import { rollup } from 'rollup'
+import rollupVirtual from '@rollup/plugin-virtual'
 import { createSSRApp, h } from 'vue'
-import * as compiler from '@vue/compiler-sfc'
-import { renderToString } from '@vue/server-renderer'
-import { build } from 'vite'
-import vuePlugin from '@vitejs/plugin-vue'
-import type { RollupOutput, OutputChunk, OutputAsset } from 'rollup'
-
-console.log('------esbuild', require('esbuild'))
-console.log('------vue/compiler-sfc', require('vue/compiler-sfc'))
+import {
+  parse,
+  compileScript,
+  compileStyle,
+  rewriteDefault,
+  compileTemplate
+} from 'vue/compiler-sfc'
+import { renderToString } from 'vue/server-renderer'
 
 export const renderVueComponent = async (templateString: string, componentProps: any = {}) => {
-  const parsed = compiler.parse(templateString)
-  if (parsed.errors.length) {
-    throw `Template parse error ${parsed.errors.join(';')}`
+  const { descriptor, errors } = parse(templateString)
+  if (errors.length) {
+    throw `Template parse error ${errors.join(';')}`
   }
 
-  // console.log('renderVueComponent-entry', templateString)
-  const virtualID = 'template.vue'
-  const output = await build({
-    logLevel: 'warn',
-    plugins: [
-      vuePlugin({ isProduction: true, compiler }),
-      {
-        name: 'virtual-plugin',
-        resolveId: (id) => (id.endsWith(virtualID) ? virtualID : null),
-        load: (id) => (id === virtualID ? templateString : null)
-      }
-    ],
-    build: {
-      write: false,
-      ssr: true,
-      cssCodeSplit: false,
-      rollupOptions: {
-        input: virtualID,
-        external: ['vue', /^@vue\/(.*)/]
-      }
-    }
-  })
+  // vue template | vue script
+  if (!descriptor.template?.content || !descriptor.script?.content) {
+    throw `Invalid template`
+  }
 
-  const outputs = (output as RollupOutput).output || []
-  const scriptChunk = outputs.filter((i) => i.type === 'chunk' && i.isEntry)[0] as OutputChunk
-  const styleChunk = outputs.filter(
-    (i) => i.type === 'asset' && i.name?.endsWith('.css')
-  )[0] as OutputAsset
-  const sandbox = vm.createContext({ exports: {}, require })
-  const componentObject = vm.runInContext(scriptChunk.code, sandbox)
+  // https://github.com/vuejs/core/tree/main/packages/compiler-sfc#high-level-workflow
+  const compileID = 'template'
+  const compiledScript = compileScript(descriptor, { isProd: true, id: compileID }).content
+  const compiledRenderFn = compileTemplate({
+    source: descriptor.template.content,
+    id: compileID,
+    filename: `${compileID}.vue`
+  })
+  const compiledStyle = descriptor.styles
+    .filter((style) => style.type === 'style')
+    .map((style) => {
+      const s = compileStyle({
+        source: style.content,
+        id: compileID,
+        filename: `${compileID}.css`
+      })
+      return s.code
+    })
+    .join('\n')
+
+  const esmScript = `
+    ${rewriteDefault(compiledScript, 'component')}
+    ;// ...
+  `
+
+  const bundle = await rollup({
+    input: 'script',
+    external: ['vue'],
+    plugins: [rollupVirtual({ script: esmScript })]
+  })
+  const { output } = await bundle.generate({ format: 'commonjs' })
+  const commonjsScript = output[0].code
+  // console.log('renderVueComponent', 'parsed', { esmScript, commonjsScript })
+  // http://nodejs.cn/api/vm.html#new-vmscriptcode-options
+  const sandbox = vm.createContext({ require })
+  const vmScript = new vm.Script(commonjsScript)
+  const componentObject = vmScript.runInContext(sandbox)
+  componentObject.template = descriptor.template.content
+  // console.log('renderVueComponent', { componentObject })
   const result = await renderToString(
     createSSRApp({
       name: 'Template',
       render: () => h(componentObject, componentProps)
     })
   )
-
   // console.log('renderVueComponent', 'componentObject', componentObject)
   // console.log('renderVueComponent', 'vueComponent', result)
-  // console.log('renderVueComponent', 'style', styleChunk.source)
 
   return {
     html: result,
-    css: styleChunk.source.toString()
+    css: compiledStyle
   }
 }

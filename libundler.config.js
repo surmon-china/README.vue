@@ -12,6 +12,7 @@ module.exports = {
   minimize: false,
   banner: false,
   external: [
+    /^vue\/(.*)/,
     ...builtinModules,
     ...Object.keys(packageJSON.dependencies),
     ...Object.keys(packageJSON.devDependencies)
