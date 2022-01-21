@@ -10,19 +10,19 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
-    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "downlevelIteration": true,
     "strictNullChecks": true,
     "target": "es2017",
     "sourceMap": true,
-    "rootDir": "src",
-    "outDir": "./dist"
+    "rootDir": ".",
+    "outDir": "./dist",
+    "baseUrl": "./app"
   },
   "typeAcquisition": {
     "include": ["jest"]
   },
-  "include": ["src/**/*", "test/**/*"],
+  "include": ["app/**/*", "test/**/*"],
   "exclude": ["node_modules", "dist"],
   "typeRoots": ["node_modules/@types"]
 }
