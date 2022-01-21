@@ -29,6 +29,7 @@
     "@vitejs/plugin-vue": "^2.0.1",
     "@vue/compiler-sfc": "^3.2.28",
     "@vue/server-renderer": "^3.2.28",
+    "vue/compiler-sfc": "npm:@vue/compiler-sfc@^3.2.28",
     "axios": "^0.25.0",
     "compression": "^1.7.4",
     "express": "^4.17.2",
@@ -38,7 +39,6 @@
     "vue": "^3.2.28"
   },
   "devDependencies": {
-    "vue/compiler-sfc": "npm:@vue/compiler-sfc@^3.2.28",
     "@surmon-china/libundler": "^1.1.1",
     "@types/express": "^4.17.13",
     "@types/fs-extra": "^9.0.13",
