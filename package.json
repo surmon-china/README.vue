@@ -29,7 +29,6 @@
     "@vitejs/plugin-vue": "^2.0.1",
     "@vue/compiler-sfc": "^3.2.28",
     "@vue/server-renderer": "^3.2.28",
-    "vue/compiler-sfc": "npm:@vue/compiler-sfc@^3.2.28",
     "axios": "^0.25.0",
     "compression": "^1.7.4",
     "express": "^4.17.2",

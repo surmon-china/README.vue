@@ -1,13 +1,13 @@
 import vm from 'vm'
 import { createSSRApp, h } from 'vue'
-import { parse } from '@vue/compiler-sfc'
+import * as compiler from '@vue/compiler-sfc'
 import { renderToString } from '@vue/server-renderer'
 import { build } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
 import type { RollupOutput, OutputChunk, OutputAsset } from 'rollup'
 
 export const renderVueComponent = async (templateString: string, componentProps: any = {}) => {
-  const parsed = parse(templateString)
+  const parsed = compiler.parse(templateString)
   if (parsed.errors.length) {
     throw `Template parse error ${parsed.errors.join(';')}`
   }
@@ -16,7 +16,7 @@ export const renderVueComponent = async (templateString: string, componentProps:
   const virtualID = 'template.vue'
   const output = await build({
     plugins: [
-      vuePlugin({ isProduction: true }),
+      vuePlugin({ isProduction: true, compiler }),
       {
         name: 'virtual-plugin',
         resolveId: (id) => (id.endsWith(virtualID) ? virtualID : null),
