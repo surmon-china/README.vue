@@ -17,6 +17,7 @@ export const renderVueComponent = async (templateString: string, componentProps:
   // console.log('renderVueComponent-entry', templateString)
   const virtualID = 'template.vue'
   const output = await build({
+    logLevel: 'warn',
     plugins: [
       vuePlugin({ isProduction: true, compiler }),
       {
