@@ -586,7 +586,7 @@
   resolved "https://registry.yarnpkg.com/@types/ua-parser-js/-/ua-parser-js-0.7.36.tgz#9bd0b47f26b5a3151be21ba4ce9f5fa457c5f190"
   integrity sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==
 
-"@typescript-eslint/parser@^5.9.1":
+"@typescript-eslint/parser@^5.10.0":
   version "5.10.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.10.0.tgz#8f59e036f5f1cffc178cacbd5ccdd02aeb96c91c"
   integrity sha512-pJB2CCeHWtwOAeIxv8CHVGJhI5FNyJAIpx5Pt72YkK3QfEzt6qAlXZuyaBmyfOdM62qU0rbxJzNToPTVeJGrQw==
@@ -662,7 +662,7 @@
     "@vue/compiler-core" "3.2.28"
     "@vue/shared" "3.2.28"
 
-"@vue/compiler-sfc@3.2.28", "@vue/compiler-sfc@^3", "@vue/compiler-sfc@^3.2.27":
+"@vue/compiler-sfc@3.2.28", "@vue/compiler-sfc@^3", "@vue/compiler-sfc@^3.2.28":
   version "3.2.28"
   resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-3.2.28.tgz#0a576c09abc72d6a76b153133de6fd7599c182c3"
   integrity sha512-zB0WznfEBb4CbGBHzhboHDKVO5nxbkbxxFo9iVlxObP7a9/qvA5kkZEuT7nXP52f3b3qEfmVTjIT23Lo1ndZdQ==
@@ -721,7 +721,7 @@
     "@vue/shared" "3.2.28"
     csstype "^2.6.8"
 
-"@vue/server-renderer@3.2.28", "@vue/server-renderer@^3.2.27":
+"@vue/server-renderer@3.2.28", "@vue/server-renderer@^3.2.28":
   version "3.2.28"
   resolved "https://registry.yarnpkg.com/@vue/server-renderer/-/server-renderer-3.2.28.tgz#235944dc4d969fadd387f62acc2eb8b8d50008a2"
   integrity sha512-S+MhurgkPabRvhdDl8R6efKBmniJqBbbWIYTXADaJIKFLFLQCW4gcYUTbxuebzk6j3z485vpekhrHHymTF52Pg==
@@ -3489,7 +3489,7 @@ typescript@4.3.4:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.4.tgz#3f85b986945bcf31071decdd96cf8bfa65f9dcbc"
   integrity sha512-uauPG7XZn9F/mo+7MrsRjyvbxFpzemRjKEZXS4AK83oP2KKOJPvb+9cO/gmnv8arWZvhnjVOXz7B49m1l0e9Ew==
 
-typescript@^4.5.4:
+typescript@^4.5.5:
   version "4.5.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
   integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
@@ -3589,7 +3589,7 @@ vue-eslint-parser@^8.0.1:
     lodash "^4.17.21"
     semver "^7.3.5"
 
-vue@^3.2.27:
+vue@^3.2.28:
   version "3.2.28"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.28.tgz#840d193bf9713f57a365ef115c4b1286d43e0e5d"
   integrity sha512-U+jBwVh3RQ9AgceLFdT7i2FFujoC+kYuGrKo5y8aLluWKZWPS40WgA2pyYHaiSX9ydCbEGr3rc/JzdqskzD95g==
