@@ -7,6 +7,7 @@ import vuePlugin from '@vitejs/plugin-vue'
 import type { RollupOutput, OutputChunk, OutputAsset } from 'rollup'
 
 export const renderVueComponent = async (templateString: string, componentProps: any = {}) => {
+  console.log('----compiler test', compiler)
   const parsed = compiler.parse(templateString)
   if (parsed.errors.length) {
     throw `Template parse error ${parsed.errors.join(';')}`
