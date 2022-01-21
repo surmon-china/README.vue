@@ -6,6 +6,9 @@ import { build } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
 import type { RollupOutput, OutputChunk, OutputAsset } from 'rollup'
 
+console.log('------esbuild', require('esbuild'))
+console.log('------vue/compiler-sfc', require('vue/compiler-sfc'))
+
 export const renderVueComponent = async (templateString: string, componentProps: any = {}) => {
   const parsed = compiler.parse(templateString)
   if (parsed.errors.length) {
