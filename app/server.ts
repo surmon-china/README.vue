@@ -3,7 +3,7 @@ import express, { RequestHandler } from 'express'
 import compression from 'compression'
 
 import indexAPI from '../api/index'
-import templateAPI from '../api/template'
+import templatesAPI from '../api/templates'
 import renderAPI from '../api/render'
 
 const app = express()
@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(compression())
 
 app.get('/', indexAPI as any as RequestHandler)
-app.get('/template', templateAPI as any as RequestHandler)
+app.get('/templates', templatesAPI as any as RequestHandler)
 app.get('/render', renderAPI as any as RequestHandler)
 
 const PORT = 8000
