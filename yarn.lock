@@ -662,7 +662,7 @@
     "@vue/compiler-core" "3.2.28"
     "@vue/shared" "3.2.28"
 
-"@vue/compiler-sfc@3.2.28", "@vue/compiler-sfc@^3", "@vue/compiler-sfc@^3.2.28":
+"@vue/compiler-sfc@3.2.28", "@vue/compiler-sfc@^3", "@vue/compiler-sfc@^3.2.28", "vue/compiler-sfc@npm:@vue/compiler-sfc@^3.2.28":
   version "3.2.28"
   resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-3.2.28.tgz#0a576c09abc72d6a76b153133de6fd7599c182c3"
   integrity sha512-zB0WznfEBb4CbGBHzhboHDKVO5nxbkbxxFo9iVlxObP7a9/qvA5kkZEuT7nXP52f3b3qEfmVTjIT23Lo1ndZdQ==
