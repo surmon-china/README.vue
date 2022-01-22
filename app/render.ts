@@ -35,6 +35,14 @@ export const renderTemplate = async (params: TemplateRendererParams = {}): Promi
     }
   })
 
+  const svgParamPrefix = `svg.`
+  const svgParams = {}
+  Object.keys(restParams).forEach((paramKey) => {
+    if (paramKey.startsWith(svgParamPrefix)) {
+      svgParams[paramKey.replace(svgParamPrefix, '')] = restParams[paramKey]
+    }
+  })
+
   const { html, css } = await renderVueComponent(template, templateParams)
-  return renderSVG(html, css)
+  return renderSVG(html, css, svgParams)
 }
