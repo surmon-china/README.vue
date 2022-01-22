@@ -23,7 +23,7 @@
     },
     setup(props) {
       const icon = computed(() => $ctx.simpleIcons.Get(props.slug.toLowerCase()))
-      const iconColor = computed(() => props.color || (icon.value ? `#${icon.value.hex}` : ''))
+      const iconColor = computed(() => props.color || (icon.value ? `#${icon.value.hex}` : null))
       const fallbackTextSVG = `
         <svg
           viewBox="0 0 24 24"
@@ -33,10 +33,10 @@
           <text
             x="50%"
             y="50%"
-            dominant-baseline="middle"
+            dominant-baseline="central"
             text-anchor="middle"
             font-weight="bold"
-            font-size="24"
+            font-size="28"
           >${props.slug[0].toUpperCase()}</text>
         </svg>
       `
@@ -64,6 +64,6 @@
     display: block;
     width: 100%;
     height: 100%;
-    fill: var(--color);
+    fill: var(--color, initial);
   }
 </style>

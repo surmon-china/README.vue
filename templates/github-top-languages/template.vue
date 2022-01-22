@@ -63,8 +63,7 @@
       }
 
       const data = await $ctx.store.github(props.username, ['repositories_languages'])
-      const dataList = data.repositories_languages
-      const nodes = dataList
+      const nodes = data.repositories_languages
         .filter((item) => {
           return !props.excludeRepos.includes(item.repository) && item.languages.length > 0
         })
