@@ -1,5 +1,5 @@
 <template>
-  <div class="main" :class="theme">
+  <div class="main" :class="theme" :style="background ? { backgroundColor: background } : {}">
     <div class="progress">
       <span
         class="item"
@@ -55,6 +55,10 @@
       theme: {
         type: String,
         default: 'light'
+      },
+      background: {
+        type: String,
+        required: false
       }
     },
     async setup(props) {
@@ -133,7 +137,6 @@
     height: var(--progress-size);
     border-radius: 2px;
     overflow: hidden;
-    background-color: #eee;
   }
 
   .progress .item {
@@ -163,7 +166,7 @@
     border-radius: 2px;
   }
   .languages .item .name {
-    margin-right: 0.5em;
+    margin-right: 0.3em;
   }
   .languages .item .percentage {
     font-size: 90%;
