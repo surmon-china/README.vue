@@ -27,11 +27,11 @@ export const renderTemplate = async (params: TemplateRendererParams = {}): Promi
     throw 'Invalid template params'
   }
 
-  const templateParamPrefix = `params.`
-  const templateParams = {}
+  const componentPropPrefix = `props.`
+  const componentProps = {}
   Object.keys(restParams).forEach((paramKey) => {
-    if (paramKey.startsWith(templateParamPrefix)) {
-      templateParams[paramKey.replace(templateParamPrefix, '')] = restParams[paramKey]
+    if (paramKey.startsWith(componentPropPrefix)) {
+      componentProps[paramKey.replace(componentPropPrefix, '')] = restParams[paramKey]
     }
   })
 
@@ -43,6 +43,6 @@ export const renderTemplate = async (params: TemplateRendererParams = {}): Promi
     }
   })
 
-  const { html, css } = await renderVueComponent(template, templateParams)
+  const { html, css } = await renderVueComponent(template, componentProps)
   return renderSVG(html, css, svgParams)
 }

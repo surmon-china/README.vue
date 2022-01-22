@@ -20,14 +20,21 @@
 
 <style>
   .main {
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: monospace;
+    color: white;
+  }
+
+  .main.light {
     background: linear-gradient(
       45deg,
       #f09433 0%,
@@ -38,12 +45,8 @@
     );
   }
 
-  .main.light {
-    color: white;
-  }
-
   .main.dark {
-    color: black;
+    background: black;
   }
 
   @keyframes text-animation {
