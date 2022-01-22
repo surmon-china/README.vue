@@ -2,7 +2,7 @@
 
 🚀 Design your README.md by Vue component.
 
-![](https://readme.app.surmon.me/api/render?template_id=hello-world&svg.width=830&svg.height=300)
+![](https://readme.app.surmon.me/api/render?template_id=hello-world&props.theme=dark&svg.width=830&svg.height=300)
 
 ## Render API
 
