@@ -8,9 +8,7 @@
 </template>
 
 <script>
-  import { defineComponent, computed } from 'vue'
-  import simpleIcons from 'simple-icons'
-
+  const { defineComponent, computed } = $ctx.vue
   export default defineComponent({
     name: 'SimpleIcons',
     props: {
@@ -24,7 +22,7 @@
       }
     },
     setup(props) {
-      const icon = computed(() => simpleIcons.Get(props.slug.toLowerCase()))
+      const icon = computed(() => $ctx.simpleIcons.Get(props.slug.toLowerCase()))
       const iconColor = computed(() => props.color || (icon.value ? `#${icon.value.hex}` : ''))
       const fallbackTextSVG = `
         <svg

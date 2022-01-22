@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import { defineComponent } from 'vue'
+  const { defineComponent } = $ctx.vue
   export default defineComponent({
     name: 'HelloWorld',
     props: {

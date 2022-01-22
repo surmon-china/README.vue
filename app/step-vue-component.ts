@@ -1,13 +1,7 @@
 import vm from 'vm'
 import { rollup } from 'rollup'
 import rollupVirtual from '@rollup/plugin-virtual'
-import {
-  parse,
-  compileScript,
-  compileStyle,
-  rewriteDefault,
-  compileTemplate
-} from 'vue/compiler-sfc'
+import { parse, compileScript, compileStyle, compileTemplate } from 'vue/compiler-sfc'
 
 export interface ResolvedComponent {
   name?: string
@@ -51,25 +45,23 @@ export const resolveVueComponent = async (
     })
     .join('\n')
 
-  const esmScript = `
-    ${rewriteDefault(compiledScript, 'component')}
-    ;// ...
-  `
-
   const bundle = await rollup({
     input: 'script',
     external: ['vue'],
-    plugins: [rollupVirtual({ script: esmScript })]
+    plugins: [rollupVirtual({ script: compiledScript })]
   })
-  const { output } = await bundle.generate({ format: 'commonjs' })
+  const { output } = await bundle.generate({ format: 'commonjs', exports: 'auto' })
   const commonjsScript = output[0].code
-  // console.log('renderVueComponent', 'parsed', { esmScript, commonjsScript })
+  // console.log('resolveVueComponent', 'parsed', { compiledScript, commonjsScript })
+
   // http://nodejs.cn/api/vm.html#new-vmscriptcode-options
-  const sandbox = vm.createContext({ require, ...context })
+  const fakeModule = { exports: {} }
+  const sandbox = vm.createContext({ module: fakeModule, $ctx: Object.freeze({ ...context }) })
   const vmScript = new vm.Script(commonjsScript)
   const componentObject = vmScript.runInContext(sandbox)
+  // console.log('resolveVueComponent', { componentObject })
+
   componentObject.template = descriptor.template.content
   componentObject.style = compiledStyle
-  console.log('renderVueComponent', { componentObject })
   return componentObject
 }

@@ -219,7 +219,7 @@ export default async (username: string, fields: GitHubStoreFields[]) => {
     }
   )
 
-  console.log('queryDocument', queryDocument)
+  // console.log('queryDocument', queryDocument)
   // https://docs.github.com/en/graphql/overview/explorer
   // https://docs.github.com/en/graphql/reference/objects#user
   const originalData = await graphql('https://api.github.com/graphql', queryDocument, GITHUB_TOKEN)

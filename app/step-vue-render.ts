@@ -1,5 +1,8 @@
 import fs from 'fs-extra'
 import path from 'path'
+import simpleIcons from 'simple-icons'
+import * as lodash from 'lodash'
+import * as vue from 'vue'
 import { createSSRApp, h } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { resolveVueComponent } from './step-vue-component'
@@ -8,7 +11,13 @@ import githubStore from './store/github'
 import npmStore from './store/npm'
 
 const injectTemplateContext = {
-  $store: { github: githubStore, npm: npmStore }
+  vue: Object.freeze(vue),
+  lodash: Object.freeze(lodash),
+  simpleIcons: Object.freeze(simpleIcons),
+  store: Object.freeze({
+    github: githubStore,
+    npm: npmStore
+  })
 }
 
 export const renderVueComponent = async (templateString: string, componentProps: any = {}) => {
@@ -16,7 +25,7 @@ export const renderVueComponent = async (templateString: string, componentProps:
   const components = await Promise.all(
     COMPONENTS_NAME.map(async (name) => {
       const componentBuf = await fs.readFile(path.resolve(COMPONENTS_PATH, name))
-      const component = await resolveVueComponent(componentBuf.toString())
+      const component = await resolveVueComponent(componentBuf.toString(), injectTemplateContext)
       return component
     })
   )

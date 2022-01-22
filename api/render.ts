@@ -14,6 +14,7 @@ export default function (request: VercelRequest, response: VercelResponse) {
       response.end(svg)
     })
     .catch((error) => {
+      console.warn('Render error:', error)
       response.status(500).send({
         error: error?.message || String(error)
       })

@@ -21,8 +21,7 @@
 </template>
 
 <script>
-  import { defineComponent } from 'vue'
-
+  const { defineComponent } = $ctx.vue
   // https://github.com/simple-icons/simple-icons/blob/develop/slugs.md
   const simpleIconSlugMap = new Map([
     ['Vue', 'vuedotjs'],
@@ -63,7 +62,7 @@
         throw `Invalid username!`
       }
 
-      const data = await $store.github(props.username, ['repositories_languages'])
+      const data = await $ctx.store.github(props.username, ['repositories_languages'])
       const dataList = data.repositories_languages
       const nodes = dataList
         .filter((item) => {
