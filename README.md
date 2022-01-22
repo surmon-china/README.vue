@@ -1,30 +1,41 @@
 # README.md
 
-Generate your README.md by Vue component.
+🚀 Design your README.md by Vue component.
 
 ![](https://readme.app.surmon.me/api/render?template_id=hello-world&svg.width=830&svg.height=300)
 
-### API
+
+## Render API
 
 BaseURL: `http://readme.app.surmon.me/api/render`
 
-#### Template ID
+### 🔷 Template params
 
-`?template_id=<template_id>`
+**Template ID** `?template_id=<template_id>`
 
-#### Template URL
+Use default [template](https://github.com/surmon-china/README.md/tree/main/templates).
 
-`?template_url=<template_url_xxx.vue>`
+**Template URL** `?template_url=<template_url_xxx.vue>`
 
-#### Template string
+Use your remote vue template.
 
-`?template_string=<template_content_string>`
+**Template string** `?template_string=<template_content_string>`
+ 
+Use your vue template by query string.
 
-#### Template params
+### 🔷 Template render params
 
-`?params.<param1_name>=<param1_value>&params.<param2_name>=<param2_value>`
+begin with `props.`, template render params will transmit to vue component's `props`.
 
-### HelloWorld
+e.g. `?props.theme=dark&props.rows=2` will transmit to vue component `{ theme: 'dark', rows: '2' }`
+
+### 🔷 SVG render params
+
+begin with `svg.`, SVG render params will transmit to SVG wrapper's attributes.
+
+e.g. `?svg.width=830&svg.height=100` will transmit to SVG wrapper `<svg ...  width="830" height="100">`
+
+## HelloWorld
 
 #### simple example
 
@@ -32,11 +43,54 @@ BaseURL: `http://readme.app.surmon.me/api/render`
 ![](https://readme.app.surmon.me/api/render?template_id=hello-world)
 ```
 
-#### params example
+#### template params example
 
 ```markdown
-![](https://readme.app.surmon.me/api/render?template_id=hello-world&params.theme=dark)
+![](https://readme.app.surmon.me/api/render?template_id=hello-world&props.theme=dark)
 ```
+
+#### SVG params example
+
+```markdown
+![](https://readme.app.surmon.me/api/render?template_id=hello-world&svg.width=800&svg.height=300)
+```
+
+## Template
+
+1. must be a vue SFC component
+2. can't use Node.js API, `$ctx` only (see [sandbox context](https://github.com/surmon-china/README.md/blob/main/app/step-vue-render.ts#L13))
+3. plain SFC component only
+
+example
+
+```vue
+<template>
+  <div class="main">
+    <p>content</p>
+  </div>
+</template>
+
+<script>
+  const { defineComponent } = $ctx.vue
+  export default defineComponent({
+    name: 'Example',
+    props: {
+      theme: {
+        type: String,
+        default: 'light'
+      }
+    }
+  })
+</script>
+
+<style>
+  .main {
+    width: 100px;
+    height: 100px;
+  }
+</style>
+```
+
 
 ## Development Setup
 
