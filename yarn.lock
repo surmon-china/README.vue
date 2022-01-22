@@ -526,6 +526,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/lodash@^4.14.178":
+  version "4.14.178"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.178.tgz#341f6d2247db528d4a13ddbb374bcdc80406f4f8"
+  integrity sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==
+
 "@types/mime@^1":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-1.3.2.tgz#93e25bf9ee75fe0fd80b594bc4feb0e862111b5a"
@@ -1899,6 +1904,11 @@ globby@^11.0.4:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
+gql-query-builder@^3.5.7:
+  version "3.5.7"
+  resolved "https://registry.yarnpkg.com/gql-query-builder/-/gql-query-builder-3.5.7.tgz#d757009d3194883cb98b94d0485e304c93289917"
+  integrity sha512-zPU9weUUbgYMzJsR3GP40MTH5OQoAP+9GMIcSAFWb2rbHZeYlF2YkDJPyOu0gYHww43QvZxfARvabGyE8NLItA==
+
 graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   version "4.2.9"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
@@ -3082,6 +3092,11 @@ shebang-regex@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
+
+simple-icons@^6.7.0:
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-6.7.0.tgz#45263b5cd624f26f8f11c8ce1cf814be07de41dc"
+  integrity sha512-bEqOxIkVGTX/Dlq84bXM3ohzRkwE/kpUloSTNvKb7QDTR35ufxMthK3u6kZy2SbmbhFKSpM3Jc8tgAzgfzwV5w==
 
 slash@^3.0.0:
   version "3.0.0"

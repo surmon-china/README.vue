@@ -1,10 +1,17 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { CACHE_SECONDS } from '../app/constant'
 import { renderTemplate } from '../app/render'
 
 export default function (request: VercelRequest, response: VercelResponse) {
-  renderTemplate(request.query)
+  const { cache_seconds, ...queryParams } = request.query
+  renderTemplate(queryParams)
     .then((svg) => {
-      response.setHeader('Content-Type', 'image/svg+xml').end(svg)
+      const cacheSeconds = Number.isNaN(parseInt(cache_seconds as string))
+        ? CACHE_SECONDS.ONE_DAY
+        : parseInt(cache_seconds as string)
+      response.setHeader('Content-Type', 'image/svg+xml')
+      response.setHeader('Cache-Control', `public, max-age=${cacheSeconds}`)
+      response.end(svg)
     })
     .catch((error) => {
       response.status(500).send({

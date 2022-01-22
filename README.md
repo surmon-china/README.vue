@@ -2,6 +2,8 @@
 
 Generate your README.md by Vue component.
 
+<img src="https://readme.app.surmon.me/api/render?template_id=hello-world" width="100%" height="300px" />
+
 ### API
 
 BaseURL: `http://readme.app.surmon.me/api/render`
@@ -16,7 +18,7 @@ BaseURL: `http://readme.app.surmon.me/api/render`
 
 #### Template string
 
-`?template_url=<template_url_xxx.vue>`
+`?template_string=<template_content_string>`
 
 #### Template params
 
@@ -35,10 +37,6 @@ BaseURL: `http://readme.app.surmon.me/api/render`
 ```markdown
 ![](https://readme.app.surmon.me/api/render?template_id=hello-world&params.theme=dark)
 ```
-
-#### return image
-
-<img src="https://readme.app.surmon.me/api/render?template_id=hello-world" width="100%" height="300px" />
 
 ## Development Setup
 

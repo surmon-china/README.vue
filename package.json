@@ -31,20 +31,24 @@
     "compression": "^1.7.4",
     "express": "^4.17.2",
     "fs-extra": "^10.0.0",
+    "gql-query-builder": "^3.5.7",
+    "lodash": "^4.17.21",
     "rollup": "^2.65.0",
+    "simple-icons": "^6.7.0",
+    "typescript": "^4.5.5",
     "vue": "^3.2.28"
   },
   "devDependencies": {
     "@surmon-china/libundler": "^1.1.1",
     "@types/express": "^4.17.13",
     "@types/fs-extra": "^9.0.13",
+    "@types/lodash": "^4.14.178",
     "@typescript-eslint/parser": "^5.10.0",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.3.0",
     "prettier": "^2.5.1",
-    "ts-node-dev": "^1.1.8",
-    "typescript": "^4.5.5"
+    "ts-node-dev": "^1.1.8"
   }
 }

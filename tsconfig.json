@@ -15,14 +15,14 @@
     "strictNullChecks": true,
     "target": "es2017",
     "sourceMap": true,
-    "rootDir": ".",
     "outDir": "./dist",
-    "baseUrl": "./app"
+    "rootDir": ".",
+    "baseUrl": "."
   },
   "typeAcquisition": {
     "include": ["jest"]
   },
-  "include": ["app/**/*", "test/**/*"],
+  "include": ["api/**/*", "app/**/*", "schemas/**/*", "test/**/*"],
   "exclude": ["node_modules", "dist"],
   "typeRoots": ["node_modules/@types"]
 }

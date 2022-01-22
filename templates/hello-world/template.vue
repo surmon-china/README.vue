@@ -2,9 +2,6 @@
   <div class="main" :class="theme">
     <div class="image"></div>
     <h1 class="title">Hello, World!</h1>
-    <!-- <svg width="200" height="150" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="100" cy="50" r="40" stroke="green" stroke-width="2" fill="white" />
-    </svg> -->
   </div>
 </template>
 
@@ -16,11 +13,6 @@
       theme: {
         type: String,
         default: 'light'
-      }
-    },
-    setup() {
-      return {
-        count: 3
       }
     }
   })
@@ -64,6 +56,7 @@
   }
 
   .title {
+    margin-bottom: 0;
     font-size: 300%;
     font-weight: normal;
     transition: color 0.5s;

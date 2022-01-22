@@ -1,7 +1,6 @@
 import vm from 'vm'
 import { rollup } from 'rollup'
 import rollupVirtual from '@rollup/plugin-virtual'
-import { createSSRApp, h } from 'vue'
 import {
   parse,
   compileScript,
@@ -9,17 +8,27 @@ import {
   rewriteDefault,
   compileTemplate
 } from 'vue/compiler-sfc'
-import { renderToString } from 'vue/server-renderer'
 
-export const renderVueComponent = async (templateString: string, componentProps: any = {}) => {
-  const { descriptor, errors } = parse(templateString)
+export interface ResolvedComponent {
+  name?: string
+  props: any
+  setup: () => any
+  template: string
+  style: string
+}
+
+export const resolveVueComponent = async (
+  template: string,
+  context: any = {}
+): Promise<ResolvedComponent> => {
+  const { descriptor, errors } = parse(template)
   if (errors.length) {
     throw `Template parse error ${errors.join(';')}`
   }
 
   // vue template | vue script
   if (!descriptor.template?.content || !descriptor.script?.content) {
-    throw `Invalid template`
+    throw `Invalid template (vue SFC component)`
   }
 
   // https://github.com/vuejs/core/tree/main/packages/compiler-sfc#high-level-workflow
@@ -36,7 +45,7 @@ export const renderVueComponent = async (templateString: string, componentProps:
       const s = compileStyle({
         source: style.content,
         id: compileID,
-        filename: `${compileID}.css`
+        filename: `${compileID}.vue`
       })
       return s.code
     })
@@ -56,22 +65,11 @@ export const renderVueComponent = async (templateString: string, componentProps:
   const commonjsScript = output[0].code
   // console.log('renderVueComponent', 'parsed', { esmScript, commonjsScript })
   // http://nodejs.cn/api/vm.html#new-vmscriptcode-options
-  const sandbox = vm.createContext({ require })
+  const sandbox = vm.createContext({ require, ...context })
   const vmScript = new vm.Script(commonjsScript)
   const componentObject = vmScript.runInContext(sandbox)
   componentObject.template = descriptor.template.content
-  // console.log('renderVueComponent', { componentObject })
-  const result = await renderToString(
-    createSSRApp({
-      name: 'Template',
-      render: () => h(componentObject, componentProps)
-    })
-  )
-  // console.log('renderVueComponent', 'componentObject', componentObject)
-  // console.log('renderVueComponent', 'vueComponent', result)
-
-  return {
-    html: result,
-    css: compiledStyle
-  }
+  componentObject.style = compiledStyle
+  console.log('renderVueComponent', { componentObject })
+  return componentObject
 }

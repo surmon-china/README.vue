@@ -1,6 +1,6 @@
-import { resolveTemplateByID, resolveTemplateByUrl, resolveTemplateByString } from './template'
-import { renderVueComponent } from './component'
-import { renderSVG } from './svg'
+import { resolveTemplateByID, resolveTemplateByUrl, resolveTemplateByString } from './step-template'
+import { renderVueComponent } from './step-vue-render'
+import { renderSVG } from './step-svg'
 
 export interface TemplateRendererParams {
   template_id?: string
