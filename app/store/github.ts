@@ -198,6 +198,30 @@ const handlers: Array<{
         ]
       }
     ]
+  },
+  {
+    key: GitHubStoreFields.Contributions,
+    dataer: (data) => data.contributionsCollection.contributionCalendar as any,
+    fielder: () => [
+      {
+        contributionsCollection: [
+          {
+            contributionCalendar: [
+              'colors',
+              'totalContributions',
+              {
+                weeks: [
+                  'firstDay',
+                  {
+                    contributionDays: ['color', 'contributionCount', 'date', 'weekday']
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
 

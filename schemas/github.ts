@@ -26,7 +26,8 @@ export enum GitHubStoreFields {
   Repositories = 'repositories', // Array<IRepository>
   RepositoriesCount = 'repositories_count', // number
   // https://docs.github.com/en/graphql/reference/objects#language
-  RepositoriesLanguages = 'repositories_languages' //  Array<IRepositoryLanguage>
+  RepositoriesLanguages = 'repositories_languages', //  Array<IRepositoryLanguage>
+  Contributions = 'contributions'
 }
 
 export type IUserinfo = Interface<typeof Userinfo>

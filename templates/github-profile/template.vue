@@ -5,26 +5,21 @@
 </template>
 
 <script>
-  import { defineComponent } from 'vue'
+  const { defineComponent } = $ctx.vue
   export default defineComponent({
-    name: 'GitHubTopLanguages',
+    name: 'GitHubProfile',
     props: {
       username: {
         type: String,
         required: true
-      },
-      count: {
-        type: Number,
-        default: 15
-      },
-      columns: {
-        type: Number,
-        default: 5
       }
     },
     async setup(props) {
-      const data = await $store.github(props.username, ['userinfo'])
+      if (!props.username) {
+        throw `Invalid username!`
+      }
 
+      const data = await $store.github(props.username, ['userinfo'])
       return { data }
     }
   })
