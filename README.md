@@ -4,7 +4,6 @@
 
 ![](https://readme.app.surmon.me/api/render?template_id=hello-world&svg.width=830&svg.height=300)
 
-
 ## Render API
 
 BaseURL: `http://readme.app.surmon.me/api/render`
@@ -20,7 +19,7 @@ Use default [template](https://github.com/surmon-china/README.md/tree/main/templ
 Use your remote vue template.
 
 **Template string** `?template_string=<template_content_string>`
- 
+
 Use your vue template by query string.
 
 ### 🔷 Template render params
@@ -33,7 +32,7 @@ e.g. `?props.theme=dark&props.rows=2` will transmit to vue component `{ theme: '
 
 begin with `svg.`, SVG render params will transmit to SVG wrapper's attributes.
 
-e.g. `?svg.width=830&svg.height=100` will transmit to SVG wrapper `<svg ...  width="830" height="100">`
+e.g. `?svg.width=830&svg.height=100` will transmit to SVG wrapper `<svg ... width="830" height="100">`
 
 ## HelloWorld
 
@@ -61,11 +60,11 @@ e.g. `?svg.width=830&svg.height=100` will transmit to SVG wrapper `<svg ...  wid
 2. can't use Node.js API, `$ctx` only (see [sandbox context](https://github.com/surmon-china/README.md/blob/main/app/step-vue-render.ts#L13))
 3. plain SFC component only
 
-example
+template example:
 
 ```vue
 <template>
-  <div class="main">
+  <div class="main" :class="theme">
     <p>content</p>
   </div>
 </template>
@@ -91,6 +90,9 @@ example
 </style>
 ```
 
+## Template context
+
+[TODO](https://github.com/surmon-china/README.md/blob/main/app/step-vue-render.ts#L13)
 
 ## Development Setup
 
