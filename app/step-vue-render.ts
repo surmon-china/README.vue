@@ -30,6 +30,25 @@ export const renderVueComponent = async (templateString: string, componentProps:
     })
   )
   // console.log('renderVueComponent', { component, components })
+  // format props type
+  Object.keys(componentProps).forEach((key) => {
+    const propType = component.props[key]?.type
+    if (propType) {
+      if (propType?.name === 'Number') {
+        componentProps[key] = Number(componentProps[key])
+      }
+      if (propType?.name === 'Boolean') {
+        const value = componentProps[key]
+        if (value === 'false') {
+          componentProps[key] = false
+        } else if (value === 'true') {
+          componentProps[key] = true
+        } else {
+          componentProps[key] = Boolean(value)
+        }
+      }
+    }
+  })
   const vueApp = createSSRApp({
     name: 'ReadmeApp',
     render: () => h(component, componentProps)
