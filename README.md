@@ -2,7 +2,7 @@
 
 Generate your README.md by Vue component.
 
-<img src="https://readme.app.surmon.me/api/render?template_id=hello-world" width="100%" height="300px" />
+![](https://readme.app.surmon.me/api/render?template_id=hello-world&svg.width=830&svg.height=300)
 
 ### API
 
