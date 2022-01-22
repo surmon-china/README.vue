@@ -35,7 +35,14 @@ export const renderVueComponent = async (templateString: string, componentProps:
     render: () => h(component, componentProps)
   })
   components.forEach((c) => vueApp.component(c.name!, c))
+  let renderError: any = null
+  vueApp.config.errorHandler = (error) => {
+    renderError = error
+  }
   const result = await renderToString(vueApp)
+  if (renderError) {
+    throw renderError
+  }
   // console.log('renderVueComponent', 'component', component)
   // console.log('renderVueComponent', 'result', result)
 
