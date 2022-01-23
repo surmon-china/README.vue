@@ -64,6 +64,7 @@
     overflow: hidden;
     font-family: 'Segoe UI', Ubuntu, Sans-Serif;
     font-weight: bold;
+    font-size: 16px;
   }
 
   .sponsor.fill {
@@ -76,14 +77,8 @@
     border: 1px solid;
   }
 
-  .sponsor .icon,
-  .sponsor .text,
-  .sponsor .count {
-    margin: 0 0.5em;
-  }
-
-  .sponsor .count {
-    font-size: 16px;
+  .sponsor .text {
+    margin: 0 0.6em;
   }
 
   @keyframes scanLights {
