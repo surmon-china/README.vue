@@ -27,6 +27,7 @@ export enum GitHubStoreFields {
   RepositoriesCount = 'repositories_count', // number
   // https://docs.github.com/en/graphql/reference/objects#language
   RepositoriesLanguages = 'repositories_languages', //  Array<IRepositoryLanguage>
+  // https://docs.github.com/en/graphql/reference/objects#contributioncalendar
   Contributions = 'contributions'
 }
 
@@ -72,5 +73,19 @@ export type IRepositoryLanguage = {
     size: number
     color: string
     name: string
+  }>
+}
+
+export type IContributions = {
+  totalContributions: number
+  colors: Array<string>
+  weeks: Array<{
+    firstDay: string
+    contributionDays: Array<{
+      color: string
+      weekday: string
+      date: string
+      contributionCount: number
+    }>
   }>
 }

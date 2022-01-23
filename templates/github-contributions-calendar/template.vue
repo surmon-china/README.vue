@@ -1,6 +1,6 @@
 <template>
   <div class="main" :style="{ '--gap': `${gap}px`, '--size': `${size}px` }">
-    <div class="calendar">
+    <div class="calendar" :class="{ animation }">
       <div class="week" v-for="(week, index) in contributions.weeks" :key="index">
         <div
           class="day"
@@ -29,6 +29,10 @@
       gap: {
         type: Number,
         default: 4
+      },
+      animation: {
+        type: Boolean,
+        default: false
       }
     },
     async setup(props) {
@@ -51,6 +55,43 @@
     display: flex;
   }
 
+  @keyframes day-color {
+    0% {
+      background-color: #c008089c;
+    }
+    40% {
+      background-color: rgba(0, 0, 255, 0.192);
+    }
+    50% {
+      background-color: transparent;
+    }
+  }
+
+  .calendar.animation .day {
+    animation: day-color 0.7s infinite forwards;
+  }
+  .calendar.animation .day:nth-of-type(1) {
+    animation-delay: 0.1s;
+  }
+  .calendar.animation .day:nth-of-type(2) {
+    animation-delay: 0.2s;
+  }
+  .calendar.animation .day:nth-of-type(3) {
+    animation-delay: 0.3s;
+  }
+  .calendar.animation .day:nth-of-type(4) {
+    animation-delay: 0.4s;
+  }
+  .calendar.animation .day:nth-of-type(5) {
+    animation-delay: 0.5s;
+  }
+  .calendar.animation .day:nth-of-type(6) {
+    animation-delay: 0.6s;
+  }
+  .calendar.animation .day:nth-of-type(7) {
+    animation-delay: 0.7s;
+  }
+
   .week {
     margin-right: var(--gap);
   }
@@ -60,5 +101,6 @@
     width: var(--size);
     height: var(--size);
     margin-bottom: var(--gap);
+    transition: background-color 0.2s;
   }
 </style>

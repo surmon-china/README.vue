@@ -10,7 +10,8 @@ import {
   ISponsor,
   Repository,
   IRepository,
-  IRepositoryLanguage
+  IRepositoryLanguage,
+  IContributions
 } from '../../schemas/github'
 
 const sponsorsVariables = {
@@ -201,7 +202,8 @@ const handlers: Array<{
   },
   {
     key: GitHubStoreFields.Contributions,
-    dataer: (data) => data.contributionsCollection.contributionCalendar as any,
+    dataer: (data) => data.contributionsCollection.contributionCalendar as IContributions,
+    // https://stackoverflow.com/questions/18262288/finding-total-contributions-of-a-user-from-github-api
     fielder: () => [
       {
         contributionsCollection: [
