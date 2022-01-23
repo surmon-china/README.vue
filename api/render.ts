@@ -9,6 +9,8 @@ export default function (request: VercelRequest, response: VercelResponse) {
       const userOrTemplateCache = Number.isNaN(parseInt(cache_seconds as string))
         ? result.cacheAge
         : parseInt(cache_seconds as string)
+
+      // cache age
       if (userOrTemplateCache === 0) {
         // disable cache
         response.setHeader('Cache-Control', `no-cache, max-age=0`)
@@ -17,6 +19,7 @@ export default function (request: VercelRequest, response: VercelResponse) {
         const cacheSeconds = userOrTemplateCache || CACHE_SECONDS.ONE_DAY
         response.setHeader('Cache-Control', `public, max-age=${cacheSeconds}`)
       }
+
       response.setHeader('Content-Type', 'image/svg+xml')
       response.end(result.svg)
     })
