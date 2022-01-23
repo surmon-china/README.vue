@@ -7,6 +7,7 @@
     <simple-icons class="icon" slug="githubsponsors" :color="lineStyle ? '#ea4aaa' : 'white'" />
     <span class="text">{{ text }}</span>
     <span class="count">{{ sponsors_count }}</span>
+    <div class="animation" v-if="animation"></div>
   </div>
 </template>
 
@@ -28,6 +29,10 @@
         default: 2
       },
       lineStyle: {
+        type: Boolean,
+        default: false
+      },
+      animation: {
         type: Boolean,
         default: false
       }
@@ -78,5 +83,45 @@
 
   .sponsor .count {
     font-size: 16px;
+  }
+
+  @keyframes scanLights {
+    0% {
+      opacity: 0;
+      transform: translate(-60%, 50%) rotate(-60deg);
+    }
+    14% {
+      opacity: 1;
+      transform: translate(-40%, 50%) rotate(-60deg);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(0%, 50%) rotate(-60deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(20%, 50%) rotate(-60deg);
+    }
+  }
+
+  .animation {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 30px;
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+
+    transition: all 0.2s;
+    transform-origin: center center;
+    transform: translate(-80%, 50%) rotate(-60deg);
+    animation: scanLights 5s linear 1s infinite;
   }
 </style>
