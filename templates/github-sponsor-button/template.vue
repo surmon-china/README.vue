@@ -46,10 +46,16 @@
 <style>
   .sponsor {
     --color: #ea4aaa;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1em;
+    padding: 0 1em;
     font-family: 'Segoe UI', Ubuntu, Sans-Serif;
     font-weight: bold;
   }
