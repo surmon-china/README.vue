@@ -9,7 +9,14 @@ export interface TemplateRendererParams {
   [key: string]: any
 }
 
-export const renderTemplate = async (params: TemplateRendererParams = {}): Promise<string> => {
+export interface TemplateRendererResult {
+  svg: string
+  cacheAge?: number
+}
+
+export const renderTemplate = async (
+  params: TemplateRendererParams = {}
+): Promise<TemplateRendererResult> => {
   const { template_id, template_url, template_string, ...restParams } = params
   if (!template_id && !template_url && !template_string) {
     throw 'Invalid template params'
@@ -43,6 +50,10 @@ export const renderTemplate = async (params: TemplateRendererParams = {}): Promi
     }
   })
 
-  const { html, css } = await renderVueComponent(template, componentProps)
-  return renderSVG(html, css, svgParams)
+  const { html, css, cacheAge } = await renderVueComponent(template, componentProps)
+  const svg = renderSVG(html, css, svgParams)
+  return {
+    svg,
+    cacheAge
+  }
 }

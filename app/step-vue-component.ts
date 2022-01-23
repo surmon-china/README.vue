@@ -5,6 +5,7 @@ import { parse, compileScript, compileStyle, compileTemplate } from 'vue/compile
 
 export interface ResolvedComponent {
   name?: string
+  defaultCacheAge?: number
   props: any
   setup: () => any
   template: string

@@ -7,6 +7,7 @@ import { createSSRApp, h } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { resolveVueComponent } from './step-vue-component'
 import { COMPONENTS_PATH, COMPONENTS_NAME } from './constant'
+import counterStore from './store/counter'
 import githubStore from './store/github'
 import npmStore from './store/npm'
 
@@ -16,6 +17,7 @@ const injectTemplateContext = {
   simpleIcons: Object.freeze(simpleIcons),
   store: Object.freeze({
     github: githubStore,
+    counter: counterStore,
     npm: npmStore
   })
 }
@@ -67,6 +69,7 @@ export const renderVueComponent = async (templateString: string, componentProps:
 
   return {
     html: result,
-    css: [component.style, ...components.map((c) => c.style || '')].join('\n')
+    css: [component.style, ...components.map((c) => c.style || '')].join('\n'),
+    cacheAge: component.defaultCacheAge
   }
 }

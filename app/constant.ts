@@ -2,6 +2,7 @@ import path from 'path'
 import fs from 'fs-extra'
 
 export const GITHUB_TOKEN = process.env.GH_DEV_TOKEN as string
+export const MONGODB_URI = process.env.MONGODB_URI as string
 
 export const TEMPLATES_PATH = path.resolve(__dirname, '..', 'templates')
 export const TEMPLATES_NAME = fs.readdirSync(TEMPLATES_PATH)
