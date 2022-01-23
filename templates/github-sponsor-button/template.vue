@@ -61,6 +61,7 @@
     justify-content: center;
     align-items: center;
     padding: 0 1em;
+    overflow: hidden;
     font-family: 'Segoe UI', Ubuntu, Sans-Serif;
     font-weight: bold;
   }
