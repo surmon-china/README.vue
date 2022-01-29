@@ -11,8 +11,14 @@
     </div>
     <div class="languages" :style="{ gridTemplateColumns: `repeat(${columns}, 1fr)` }">
       <div class="item" v-for="lang in topLanguages" :key="lang.name">
-        <span class="pointer" :style="{ backgroundColor: lang.color }"></span>
-        <simple-icons class="icon" :slug="getIconSlug(lang.name)" />
+        <span
+          class="legend"
+          :style="{
+            width: `${legendSize}px`,
+            backgroundColor: lang.color
+          }"
+        ></span>
+        <simple-icons v-if="!hideIcon" class="icon" :slug="getIconSlug(lang.name)" />
         <span class="name">{{ lang.name }}</span>
         <span class="percentage">{{ lang.percentage }}%</span>
       </div>
@@ -60,6 +66,14 @@
       background: {
         type: String,
         required: false
+      },
+      hideIcon: {
+        type: Boolean,
+        default: false
+      },
+      legendSize: {
+        type: Number,
+        default: 4
       }
     },
     async setup(props) {
@@ -154,7 +168,7 @@
     align-items: center;
   }
 
-  .languages .pointer {
+  .languages .legend {
     width: 4px;
     height: 1em;
     margin-right: 0.5em;
