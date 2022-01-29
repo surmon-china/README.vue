@@ -3,6 +3,9 @@
     "api/*.ts": {
       "memory": 128,
       "maxDuration": 10
+    },
+    "api/render.ts": {
+      "includeFiles": "devicon/**"
     }
   }
 }
