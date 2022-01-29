@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "tsnd app/server",
     "start": "node dist/index.cjs",
-    "build": "libundler",
+    "devicon": "node devicon/index.js",
+    "build": "npm run devicon && libundler",
     "lint": "eslint --ext .ts,.tsx,.js,.vue src",
     "format": "npm run lint --fix"
   },

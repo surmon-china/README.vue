@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# devicon
+devicon/*
+!devicon/index.js
