@@ -1,6 +1,6 @@
 {
   "name": "readme.md",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate README.md by Vue",
   "scripts": {
     "dev": "tsnd app/server",
