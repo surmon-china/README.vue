@@ -6,13 +6,13 @@ import * as vue from 'vue'
 import { createSSRApp, h } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { resolveVueComponent } from './step-vue-component'
-import { ROOT_PATH, COMPONENTS_PATH, COMPONENTS_NAME } from './constant'
+import { COMPONENTS_PATH, COMPONENTS_NAME } from './constant'
 import counterStore from './store/counter'
 import githubStore from './store/github'
 import npmStore from './store/npm'
 
 // devicon
-const deviconJSON = fs.readJsonSync(path.resolve(ROOT_PATH, 'devicon', 'devicon.json'))
+const deviconJSON = fs.readJsonSync(path.resolve(__dirname, '..', 'devicon', 'devicon.json'))
 const getDevicon = (name) => deviconJSON.find((icon) => icon.name === name) || null
 
 const injectTemplateContext = {
