@@ -17,6 +17,7 @@
   const { defineComponent } = $ctx.vue
   export default defineComponent({
     name: 'GitHubContributionsCalendar',
+    defaultCacheAge: 60 * 60 * 6, // default 6 hours cache
     props: {
       username: {
         type: String,
@@ -24,11 +25,11 @@
       },
       size: {
         type: Number,
-        default: 12
+        default: 10
       },
       gap: {
         type: Number,
-        default: 4
+        default: 3
       },
       animation: {
         type: Boolean,

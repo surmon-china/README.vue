@@ -15,6 +15,7 @@
   const { defineComponent } = $ctx.vue
   export default defineComponent({
     name: 'GitHubSponsorButton',
+    defaultCacheAge: 60 * 60 * 2, // default 2 hours cache
     props: {
       username: {
         type: String,

@@ -35,6 +35,7 @@
 
   export default defineComponent({
     name: 'GitHubTopLanguages',
+    defaultCacheAge: 60 * 60 * 24, // default 24 hours cache
     props: {
       username: {
         type: String,

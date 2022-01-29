@@ -1,11 +1,5 @@
 import mongodb from '../mongodb'
-
-interface CounterDoc {
-  guid: string
-  value: number
-  create_at: number
-  last_update: number
-}
+import { ICounter } from '../../schemas/counter'
 
 export default async (guid: string, init: number = 0) => {
   if (!guid) {
@@ -17,7 +11,7 @@ export default async (guid: string, init: number = 0) => {
   }
 
   const client = await mongodb
-  const counterCollection = await client.db().collection<CounterDoc>('counter')
+  const counterCollection = await client.db().collection<ICounter>('counter')
 
   const target = await counterCollection.findOneAndUpdate(
     { guid },
