@@ -12,7 +12,8 @@ import githubStore from './store/github'
 import npmStore from './store/npm'
 
 // devicon
-const deviconJSON = fs.readJsonSync(path.resolve(__dirname, '..', 'devicon', 'devicon.json'))
+const deviconJSON = []
+// const deviconJSON = fs.readJsonSync(path.resolve(__dirname, '..', 'devicon', 'devicon.json'))
 const getDevicon = (name) => deviconJSON.find((icon) => icon.name === name) || null
 
 const injectTemplateContext = {
