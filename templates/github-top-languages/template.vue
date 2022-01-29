@@ -18,7 +18,7 @@
             backgroundColor: lang.color
           }"
         ></span>
-        <simple-icons v-if="!hideIcon" class="icon" :slug="getIconSlug(lang.name)" />
+        <devicon v-if="!hideIcon" class="icon" :name="getIconName(lang.name)" :color="lang.color" />
         <span class="name">{{ lang.name }}</span>
         <span class="percentage">{{ lang.percentage }}%</span>
       </div>
@@ -28,15 +28,14 @@
 
 <script>
   const { defineComponent } = $ctx.vue
-  // https://github.com/simple-icons/simple-icons/blob/develop/slugs.md
-  const simpleIconSlugMap = new Map([
-    ['Vue', 'vuedotjs'],
+  // https://devicon.dev/
+  const devIconNameMap = new Map([
+    ['Vue', 'vuejs'],
     ['HTML', 'html5'],
     ['CSS', 'css3'],
     ['SASS', 'sass'],
     ['SCSS', 'sass'],
-    ['Shell', 'powershell'],
-    ['Objective-C', 'apple']
+    ['Objective-C', 'objectivec']
   ])
 
   export default defineComponent({
@@ -115,11 +114,11 @@
         }))
         .slice(0, props.count)
 
-      const getIconSlug = (langName) => {
-        return simpleIconSlugMap.get(langName) || langName.toLocaleLowerCase()
+      const getIconName = (langName) => {
+        return devIconNameMap.get(langName) || langName.toLocaleLowerCase()
       }
 
-      return { topLanguages, getIconSlug }
+      return { topLanguages, getIconName }
     }
   })
 </script>

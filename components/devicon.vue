@@ -1,20 +1,19 @@
 <template>
-  <span
-    class="simple-icon"
-    :class="icon ? 'icon' : 'text'"
-    :style="{ '--color': iconColor }"
-    v-html="icon?.svg || fallbackTextSVG"
-  ></span>
+  <span class="devicon" :style="{ '--color': iconColor }" v-html="iconSVG"></span>
 </template>
 
 <script>
-  const { defineComponent, computed } = $ctx.vue
+  const { defineComponent } = $ctx.vue
   export default defineComponent({
-    name: 'SimpleIcons',
+    name: 'Devicon',
     props: {
-      slug: {
+      name: {
         type: String,
         required: true
+      },
+      type: {
+        type: String,
+        default: 'original'
       },
       color: {
         type: String,
@@ -22,13 +21,14 @@
       }
     },
     setup(props) {
-      const icon = $ctx.simpleIcons.Get(props.slug.toLowerCase())
-      const iconColor = props.color || (icon ? `#${icon.hex}` : null)
+      const icon = $ctx.devicon(props.name)
+      const iconColor = props.color || (icon ? icon.color : null)
       const fallbackTextSVG = `
         <svg
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="var(--color, initial)"
         >
           <text
             x="50%"
@@ -37,12 +37,14 @@
             text-anchor="middle"
             font-weight="bold"
             font-size="28"
-          >${props.slug[0].toUpperCase()}</text>
+          >${props.name[0].toUpperCase()}</text>
         </svg>
       `
 
+      const iconSVG = icon?.svgs?.original || icon?.svgs?.[icon.versions.svg[0]] || fallbackTextSVG
+
       return {
-        icon,
+        iconSVG,
         iconColor,
         fallbackTextSVG
       }
@@ -51,19 +53,15 @@
 </script>
 
 <style>
-  .simple-icon {
+  .devicon {
     display: inline-block;
     width: 16px;
     height: 16px;
   }
 
-  .simple-icon.text {
-  }
-
-  .simple-icon > svg {
+  .devicon > svg {
     display: block;
     width: 100%;
     height: 100%;
-    fill: var(--color, initial);
   }
 </style>

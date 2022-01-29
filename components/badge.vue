@@ -1,11 +1,11 @@
 <template>
-  <span class="button">button</span>
+  <span class="badge">TODO</span>
 </template>
 
 <script>
   const { defineComponent } = $ctx.vue
   export default defineComponent({
-    name: 'SimpleButton',
+    name: 'Badge',
     props: {
       size: {
         type: Number,

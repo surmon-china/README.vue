@@ -11,10 +11,32 @@ import counterStore from './store/counter'
 import githubStore from './store/github'
 import npmStore from './store/npm'
 
+// https://github.com/devicons/devicon/blob/master/devicon.json
+const deviconJson = require('devicon/devicon.json')
+// devicon icons folder
+const getDevIcon = (name) => {
+  const icon = deviconJson.find((icon) => icon.name === name)
+  if (icon) {
+    const iconName = icon.name
+    const svgNames = icon.versions.svg || []
+    icon.svgs = svgNames.reduce((obj, svgName) => {
+      return {
+        ...obj,
+        [svgName]: fs
+          .readFileSync(require.resolve(`devicon/icons/${iconName}/${iconName}-${svgName}.svg`))
+          .toString()
+      }
+    }, {})
+    return icon
+  }
+  return null
+}
+
 const injectTemplateContext = {
   vue: Object.freeze(vue),
   lodash: Object.freeze(lodash),
   simpleIcons: Object.freeze(simpleIcons),
+  devicon: getDevIcon,
   store: Object.freeze({
     github: githubStore,
     counter: counterStore,
