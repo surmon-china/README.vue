@@ -2,9 +2,7 @@
   "functions": {
     "api/*.ts": {
       "memory": 128,
-      "maxDuration": 10
-    },
-    "api/render.ts": {
+      "maxDuration": 10,
       "includeFiles": "devicon/**"
     }
   }
