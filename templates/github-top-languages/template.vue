@@ -9,7 +9,14 @@
         :key="lang.name"
       ></span>
     </div>
-    <div class="languages" :style="{ gridTemplateColumns: `repeat(${columns}, 1fr)` }">
+    <div
+      class="languages"
+      :style="{
+        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        gridRowGap: `${rowGap}px`,
+        gridColumnGap: `${columnGap}px`
+      }"
+    >
       <div class="item" v-for="lang in topLanguages" :key="lang.name">
         <span
           class="legend"
@@ -57,6 +64,14 @@
       columns: {
         type: Number,
         default: 5
+      },
+      rowGap: {
+        type: Number,
+        default: 24
+      },
+      columnGap: {
+        type: Number,
+        default: 28
       },
       theme: {
         type: String,
@@ -159,7 +174,6 @@
 
   .languages {
     display: grid;
-    grid-row-gap: var(--language-row-gap);
   }
 
   .languages .item {
