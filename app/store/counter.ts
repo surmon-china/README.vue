@@ -1,7 +1,7 @@
-import mongodb from '../mongodb'
+import { readmeDatabase } from '../mongodb'
 import { ICounter } from '../../schemas/counter'
 
-export default async (guid: string, init: number = 0) => {
+export default async (guid: string, init: number = 0): Promise<ICounter> => {
   if (!guid) {
     throw new Error('Invalid GUID!')
   }
@@ -10,22 +10,27 @@ export default async (guid: string, init: number = 0) => {
     throw new Error(`Invalid init value "${init}"!`)
   }
 
-  const client = await mongodb
-  const counterCollection = await client.db().collection<ICounter>('counter')
+  const counterCollection = readmeDatabase.$collection<ICounter>('counter')
 
-  const target = await counterCollection.findOneAndUpdate(
-    { guid },
-    { $inc: { value: 1 }, $set: { last_update: Date.now() } }
-  )
+  // update
+  const result = await counterCollection.updateOne({
+    filter: { guid },
+    update: { $inc: { value: 1 }, $set: { last_update: Date.now() } }
+  })
 
-  if (!target.value) {
+  // or create if not exists
+  if (result.modifiedCount === 0) {
     await counterCollection.insertOne({
-      guid,
-      value: init,
-      create_at: Date.now(),
-      last_update: Date.now()
+      document: {
+        guid,
+        value: init,
+        create_at: Date.now(),
+        last_update: Date.now()
+      }
     })
   }
 
-  return await counterCollection.findOne({ guid })
+  const data = await counterCollection.findOne<ICounter>({ filter: { guid } })
+
+  return data.document!
 }

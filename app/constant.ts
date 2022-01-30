@@ -2,7 +2,7 @@ import path from 'path'
 import fs from 'fs-extra'
 
 export const GITHUB_TOKEN = process.env.GH_DEV_TOKEN as string
-export const MONGODB_URI = process.env.MONGODB_URI as string
+export const MONGODB_API_KEY = process.env.MONGODB_API_KEY as string
 
 // https://vercel.com/docs/runtimes#advanced-usage/technical-details/including-additional-files
 // MARK: keep static path
