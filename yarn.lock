@@ -2374,7 +2374,15 @@ mongodb-connection-string-url@^2.4.1:
     "@types/whatwg-url" "^8.2.1"
     whatwg-url "^11.0.0"
 
-mongodb@^4.3.1:
+mongodb-data-api@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/mongodb-data-api/-/mongodb-data-api-0.1.0.tgz#d70887c3d43584ce48999463c6a62c720c374ec3"
+  integrity sha512-Z37OZiPcPIt6ww0jui9xxgxxOU/B5eoZA/W1dbMtibsCoerkiWxIoa/WWF6YhHioaHMGMNGv+OBplO6Q2C6DtQ==
+  dependencies:
+    axios "^0.25.0"
+    mongodb "^4.0.0"
+
+mongodb@^4.0.0:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-4.3.1.tgz#e346f76e421ec6f47ddea5c8f5140e6181aaeb94"
   integrity sha512-sNa8APSIk+r4x31ZwctKjuPSaeKuvUeNb/fu/3B6dRM02HpEgig7hTHM8A/PJQTlxuC/KFWlDlQjhsk/S43tBg==

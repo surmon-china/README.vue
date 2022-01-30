@@ -22,7 +22,7 @@
   "typeAcquisition": {
     "include": ["jest"]
   },
-  "include": ["api/**/*", "app/**/*", "schemas/**/*", "test/**/*"],
+  "include": ["api/**/*", "app/**/*", "schemas/**/*"],
   "exclude": ["node_modules", "dist"],
   "typeRoots": ["node_modules/@types"]
 }

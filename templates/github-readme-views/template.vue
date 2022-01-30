@@ -78,7 +78,7 @@
   }
 
   .views {
-    margin-right: 0.5em;
+    margin-right: 0.3em;
     opacity: 0.7;
   }
 

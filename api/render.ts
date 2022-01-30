@@ -4,7 +4,6 @@ import { renderTemplate } from '../app/render'
 export default function (request: VercelRequest, response: VercelResponse) {
   const { cache_seconds, ...queryParams } = request.query
   const now = new Date()
-  console.info('Render run:', [now.toLocaleString(), request.url].join(' | '))
   renderTemplate(queryParams)
     .then((result) => {
       // user cache > component default cache > global 1 day cache
@@ -35,7 +34,11 @@ export default function (request: VercelRequest, response: VercelResponse) {
     .finally(() => {
       console.info(
         'Render done:',
-        [((Date.now() - now.getTime()) / 1000).toFixed(2) + 's', request.url].join(' | ')
+        [
+          ((Date.now() - now.getTime()) / 1000).toFixed(2) + 's',
+          now.toLocaleString(),
+          request.url
+        ].join(' | ')
       )
     })
 }

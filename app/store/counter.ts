@@ -1,4 +1,4 @@
-import { readmeDatabase } from '../mongodb'
+import { databse } from '../database'
 import { ICounter } from '../../schemas/counter'
 
 export default async (guid: string, init: number = 0): Promise<ICounter> => {
@@ -10,7 +10,7 @@ export default async (guid: string, init: number = 0): Promise<ICounter> => {
     throw new Error(`Invalid init value "${init}"!`)
   }
 
-  const counterCollection = readmeDatabase.$collection<ICounter>('counter')
+  const counterCollection = databse.$collection<ICounter>('counter')
 
   // update
   const result = await counterCollection.updateOne({
