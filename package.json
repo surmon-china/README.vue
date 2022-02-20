@@ -3,10 +3,10 @@
   "version": "0.1.2",
   "description": "Generate README.md by Vue",
   "scripts": {
+    "devicon": "node app/devicon/index.js",
     "dev": "tsnd app/server",
-    "start": "node dist/index.cjs",
-    "devicon": "node devicon/index.js",
     "build": "libundler",
+    "start": "node dist/index.cjs",
     "lint": "eslint --ext .ts,.tsx,.js,.vue src",
     "format": "npm run lint --fix"
   },
