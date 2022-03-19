@@ -8,7 +8,7 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "https://github.surmon.me/readme.md"
+      "destination": "https://github.surmon.me/readme-md"
     }
   ]
 }
