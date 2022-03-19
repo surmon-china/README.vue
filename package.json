@@ -42,7 +42,7 @@
     "vue": "^3.2.28"
   },
   "devDependencies": {
-    "@surmon-china/libundler": "^1.1.1",
+    "@surmon-china/libundler": "^2.1.0",
     "@types/express": "^4.17.13",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.14.178",

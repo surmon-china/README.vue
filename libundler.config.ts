@@ -1,15 +1,16 @@
-const builtinModules = require('builtin-modules')
-const packageJSON = require('./package.json')
+import { defineConfig } from '@surmon-china/libundler'
+import builtinModules from 'builtin-modules'
+import packageJSON from './package.json'
 
-/** @type {import('@surmon-china/libundler/lib/interface').LibundlerConfigObject} */
-module.exports = {
+export default defineConfig({
+  libName: 'Readme',
   entry: 'app/server.ts',
   outDir: 'dist',
   outFileName: 'index',
   targets: ['cjs'],
   parser: false,
   sourcemap: true,
-  minimize: false,
+  terser: false,
   banner: false,
   external: [
     /^vue\/(.*)/,
@@ -17,4 +18,4 @@ module.exports = {
     ...Object.keys(packageJSON.dependencies),
     ...Object.keys(packageJSON.devDependencies)
   ]
-}
+})
