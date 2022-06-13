@@ -188,6 +188,7 @@
     margin-right: 0.5em;
     border-radius: 1px;
   }
+
   .languages .item .icon {
     width: 1em;
     height: 1em;
@@ -196,6 +197,7 @@
   }
   .languages .item .name {
     margin-right: 0.3em;
+    white-space: nowrap;
   }
   .languages .item .percentage {
     font-size: 90%;
