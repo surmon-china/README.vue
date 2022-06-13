@@ -145,7 +145,7 @@
     --language-row-gap: 24px;
     padding: var(--gap);
     border: 1px solid;
-    font-size: 14px;
+    font-size: 13px;
     font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
   }
 
