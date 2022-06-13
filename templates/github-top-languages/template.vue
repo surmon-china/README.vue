@@ -145,7 +145,8 @@
     --language-row-gap: 24px;
     padding: var(--gap);
     border: 1px solid;
-    font: 14px 'Segoe UI', Ubuntu, Sans-Serif;
+    font-size: 14px;
+    font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
   }
 
   .main.light {
