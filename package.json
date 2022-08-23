@@ -2,6 +2,20 @@
   "name": "readme.md",
   "version": "0.1.2",
   "description": "Generate README.md by Vue",
+  "keywords": [
+    "github readme",
+    "readme generate"
+  ],
+  "author": "Surmon",
+  "license": "MIT",
+  "homepage": "https://github.com/surmon-china/readme.md",
+  "bugs": {
+    "url": "https://github.com/surmon-china/readme.md/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/surmon-china/readme.md.git"
+  },
   "scripts": {
     "devicon": "node app/devicon/index.js",
     "dev": "tsnd app/server",
@@ -10,20 +24,6 @@
     "lint": "eslint --ext .ts,.tsx,.js,.vue src",
     "format": "npm run lint --fix"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/surmon-china/readme.md.git"
-  },
-  "keywords": [
-    "github readme",
-    "readme generate"
-  ],
-  "author": "Surmon",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/surmon-china/readme.md/issues"
-  },
-  "homepage": "https://github.com/surmon-china/readme.md#readme",
   "dependencies": {
     "@octokit/core": "^3.5.1",
     "@rollup/plugin-virtual": "^2.0.3",
