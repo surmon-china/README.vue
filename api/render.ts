@@ -1,44 +1,21 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { renderTemplate } from '../app/render'
+import { HttpStatus, isHttpError } from '../app/error'
+import { render } from '../app'
 
-export default function (request: VercelRequest, response: VercelResponse) {
-  const { cache_seconds, ...queryParams } = request.query
-  const now = new Date()
-  renderTemplate(queryParams)
-    .then((result) => {
-      // user cache > component default cache > global 1 day cache
-      const queryCacheSeconds = parseInt(cache_seconds as string)
-      const userOrTemplateCache = Number.isNaN(queryCacheSeconds)
-        ? result.cacheAge
-        : queryCacheSeconds
-      const cacheSeconds = userOrTemplateCache ?? 60 * 60 * 24
-
-      // set cache
-      if (cacheSeconds === 0) {
-        // disable cache
-        response.setHeader('Cache-Control', `no-cache, max-age=0`)
-      } else {
-        // cache age
-        response.setHeader('Cache-Control', `public, max-age=${cacheSeconds}`)
-      }
-
-      response.setHeader('Content-Type', 'image/svg+xml')
-      response.end(result.svg)
-    })
-    .catch((error) => {
-      console.warn('Render error:', error)
-      response.status(500).send({
-        error: error?.message || String(error)
-      })
-    })
-    .finally(() => {
-      console.info(
-        'Render done:',
-        [
-          ((Date.now() - now.getTime()) / 1000).toFixed(2) + 's',
-          now.toLocaleString(),
-          request.url
-        ].join(' | ')
-      )
-    })
+export default async function handler(request: VercelRequest, response: VercelResponse) {
+  try {
+    const now = new Date()
+    const url = new URL(request.url!, `http://${request.headers.host}`)
+    const rendered = await render(url.searchParams)
+    const renderTime = ((Date.now() - now.getTime()) / 1000).toFixed(2)
+    console.info('🔹 [render:done]', `${renderTime}s`, '|', now.toLocaleString(), '|', url.search)
+    rendered.headers.forEach((value, key) => response.setHeader(key, value))
+    return response.end(rendered.result)
+  } catch (error) {
+    console.warn('🔸 [render:error]', error)
+    const message = error instanceof Error ? error.message : String(error) || 'Unknown error'
+    const stack = error instanceof Error ? error.stack?.split('\n') : String(error)
+    const statusCode = isHttpError(error) ? error.statusCode : HttpStatus.INTERNAL_SERVER_ERROR
+    return response.status(statusCode).json({ message, stack })
+  }
 }

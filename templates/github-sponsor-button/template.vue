@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="sponsor"
-    :class="[lineStyle ? 'line' : 'fill', { animation }]"
-    :style="{ borderRadius: `${radius}px` }"
-  >
+  <div class="sponsor" :class="[lineStyle ? 'line' : 'fill', { animation }]" :style="{ borderRadius: `${radius}px` }">
     <div class="spans" v-if="animation">
       <span></span>
       <span></span>

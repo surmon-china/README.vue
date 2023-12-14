@@ -7,9 +7,7 @@
       </div>
       <div class="item" key="sponsors">
         <div class="sponsor">
-          <span v-if="sponsors_count - count > 0" class="count">
-            + {{ sponsors_count - count }}
-          </span>
+          <span v-if="sponsors_count - count > 0" class="count"> + {{ sponsors_count - count }} </span>
           <simple-icons v-else slug="githubsponsors" class="icon" />
         </div>
         <p class="name" v-if="!hideName">Be Sponsor</p>
@@ -50,10 +48,7 @@
         throw `Invalid username!`
       }
 
-      const { sponsors_count, sponsors } = await $ctx.store.github(props.username, [
-        'sponsors_count',
-        'sponsors'
-      ])
+      const { sponsors_count, sponsors } = await $ctx.store.github(props.username, ['sponsors_count', 'sponsors'])
 
       return { sponsors_count, sponsors }
     }
@@ -63,7 +58,10 @@
 <style>
   .main {
     padding: var(--gap);
-    font: 14px 'Segoe UI', Ubuntu, Sans-Serif;
+    font:
+      14px 'Segoe UI',
+      Ubuntu,
+      Sans-Serif;
   }
 
   .sponsors {

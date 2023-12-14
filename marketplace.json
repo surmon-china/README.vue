@@ -1,8 +1,42 @@
 [
   {
-    "name": "A beautiful template",
-    "url": "https://xxx.com/beautiful-template.vue",
-    "example": "https://xxx.com/beautiful-template.jpg",
-    "tags": ["Profile", "userinfo"]
+    "id": "hello-world",
+    "description": "A simple template",
+    "tags": ["example", "demo", "hello-world"],
+    "documentation": "https://github.com/surmon-china/README.vue/blob/main/templates/hello-world/README.md",
+    "template": "https://github.com/surmon-china/README.vue/blob/main/templates/hello-world/template.vue",
+    "cover": null
+  },
+  {
+    "id": "github-sponsor-button",
+    "description": "GitHub sponsor button",
+    "tags": ["github", "sponsor"],
+    "documentation": "https://github.com/surmon-china/README.vue/blob/main/templates/github-sponsor-button/README.md",
+    "template": "https://github.com/surmon-china/README.vue/blob/main/templates/github-sponsor-button/template.vue",
+    "cover": null
+  },
+  {
+    "id": "github-contributions-calendar",
+    "description": "GitHub contributions calendar",
+    "tags": ["github", "contributions", "calendar"],
+    "documentation": "https://github.com/surmon-china/README.vue/blob/main/templates/github-contributions-calendar/README.md",
+    "template": "https://github.com/surmon-china/README.vue/blob/main/templates/github-contributions-calendar/template.vue",
+    "cover": "https://readme.app.surmon.me/api/render?template_id=github-contributions-calendar&props.username=surmon-china&svg.width=686&svg.height=88"
+  },
+  {
+    "id": "github-top-languages",
+    "description": "GitHub top languages",
+    "tags": ["github", "languages"],
+    "documentation": "https://github.com/surmon-china/README.vue/blob/main/templates/github-top-languages/README.md",
+    "template": "https://github.com/surmon-china/README.vue/blob/main/templates/github-top-languages/template.vue",
+    "cover": null
+  },
+  {
+    "id": "github-profile",
+    "description": "GitHub profile",
+    "tags": ["github", "userinfo", "profile"],
+    "documentation": "https://github.com/surmon-china/README.vue/blob/main/templates/github-profile/README.md",
+    "template": "https://github.com/surmon-china/README.vue/blob/main/templates/github-profile/template.vue",
+    "cover": null
   }
 ]

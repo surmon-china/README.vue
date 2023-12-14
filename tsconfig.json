@@ -1,28 +1,21 @@
 {
   "compilerOptions": {
+    "target": "es2017",
     "module": "commonjs",
     "moduleResolution": "node",
-    "incremental": true,
+    "resolveJsonModule": true,
+    "lib": ["dom", "esnext"],
+    "allowJs": true,
+    "esModuleInterop": true,
     "declaration": true,
     "noImplicitAny": false,
-    "removeComments": true,
-    "lib": ["dom", "es2015", "es2016", "es2017"],
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "downlevelIteration": true,
     "strictNullChecks": true,
-    "target": "es2017",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "rootDir": ".",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@stores": ["./app/stores/index.ts"],
+      "@components": ["./app/components/index.ts"]
+    }
   },
-  "typeAcquisition": {
-    "include": ["jest"]
-  },
-  "include": ["api/**/*", "app/**/*", "schemas/**/*"],
-  "exclude": ["node_modules", "dist"],
-  "typeRoots": ["node_modules/@types"]
+  "include": ["api/**/*", "app/**/*", "schemas/**/*", "templates/**/*", "server.ts"],
+  "exclude": ["node_modules"]
 }
